@@ -1,0 +1,272 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* ==========================================
+   HEADER SESUAI SKEMA
+   ========================================== */
+header {
+  width: 100%;
+  background: #f8f9fa;
+  border-bottom: 2px solid #ccc;
+  padding: 16px 24px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Wadah Sisi Kiri: Nama Web bertumpuk di atas Foto */
+.header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.web-brand strong {
+  font-size: 1.1rem;
+  color: #222;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.web-brand p {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 2px;
+}
+
+.profile-img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border: 2px solid #555;
+  border-radius: 4px;
+  background-color: #e9ecef;
+}
+
+/* Judul Profil Mahasiswa berada di Tengah */
+.header-title {
+  flex: 1;
+  text-align: center;
+}
+
+.header-title h1 {
+  font-size: 2rem;
+  color: #222;
+}
+
+/* ==========================================
+   LAYOUT KONTEN UTAMA
+   ========================================== */
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 420px;
+}
+
+/* Navigasi Kiri (25% di Desktop) */
+nav {
+  width: 25%;
+  background: #fafafa;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  margin-bottom: 12px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #0056b3;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Main / Section (50% di Desktop) */
+main {
+  width: 50%;
+  padding: 20px;
+}
+
+/* Mekanisme Tab Tanpa JavaScript (:target) */
+.tab-content {
+  display: none;
+}
+
+/* Biodata tampil otomatis saat pertama kali halaman dibuka */
+.default-tab {
+  display: block;
+}
+
+/* Sembunyikan default-tab jika pengguna mengklik menu lain */
+body:has(:target) .default-tab {
+  display: none;
+}
+
+/* Tampilkan tab section yang sedang dipilih/diklik */
+.tab-content:target {
+  display: block;
+}
+
+.tab-content h2 {
+  border-bottom: 2px solid #0056b3;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+.tab-content p {
+  margin-bottom: 10px;
+}
+
+/* Aside / Hobi (25% di Desktop) */
+aside {
+  width: 25%;
+  background: #fafafa;
+  padding: 20px;
+  border-left: 1px solid #ddd;
+}
+
+aside ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+aside ul li {
+  margin-bottom: 6px;
+}
+
+/* ==========================================
+   FOOTER (100%)
+   ========================================== */
+footer {
+  width: 100%;
+  background: #f4f4f4;
+  border-top: 2px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  font-size: 0.9rem;
+}
+
+.footer-left, 
+.footer-center, 
+.footer-right {
+  flex: 1;
+}
+
+.footer-left p {
+  margin-bottom: 4px;
+}
+
+.footer-center {
+  text-align: center;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+/* ==========================================
+   MEDIA QUERIES (RESPONSIF SESUAI SOAL)
+   ========================================== */
+
+/* 1. Tablet Landscape (769px - 1024px) */
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  .content-wrapper {
+    flex-wrap: wrap;
+  }
+  nav {
+    width: 25%;
+  }
+  main {
+    width: 75%;
+    border-right: none;
+  }
+  aside {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid #ddd;
+  }
+}
+
+/* 2. Tablet Portrait (601px - 768px) */
+@media screen and (max-width: 768px) and (min-width: 601px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+  nav, main, aside {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+  nav ul {
+    display: flex;
+    justify-content: space-around;
+  }
+  nav ul li {
+    margin-bottom: 0;
+  }
+  aside ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding-left: 0;
+  }
+}
+
+/* 3. Smartphone (<= 600px) */
+@media screen and (max-width: 600px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+  }
+  .header-left {
+    align-items: center;
+  }
+  .content-wrapper {
+    flex-direction: column;
+  }
+  nav, main, aside {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+  nav ul {
+    display: block;
+  }
+  nav ul li {
+    margin-bottom: 10px;
+  }
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  .footer-left, .footer-center, .footer-right {
+    text-align: center;
+  }
+}
